@@ -1,6 +1,14 @@
 package org.aman.springAOP.service;
 
-public interface StudentService {
+import org.springframework.stereotype.Service;
 
-    void createStudent();
+@Service
+public class StudentService {
+
+    // target
+    public String createStudent() {
+        System.out.println("Student saved successfully");
+        // throw new RuntimeException("Some error occurred");
+         return "Student Saved";
+    }
 }
