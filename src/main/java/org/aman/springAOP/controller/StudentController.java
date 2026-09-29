@@ -1,10 +1,9 @@
 package org.aman.springAOP.controller;
 
+import org.aman.springAOP.dto.Student;
 import org.aman.springAOP.service.StudentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/students")
@@ -17,8 +16,14 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createStudent() {
-        String s = studentService.createStudent();
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
+        Student s = studentService.createStudent(student);
         return ResponseEntity.ok(s);
+    }
+
+    @GetMapping
+    public ResponseEntity<String> getStudent() {
+        String s = "All Student Data";
+        return ResponseEntity.ok(studentService.getStudent(s));
     }
 }
